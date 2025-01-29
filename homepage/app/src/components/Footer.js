@@ -1,5 +1,6 @@
 function Footer() {
     return<>
+<<<<<<< HEAD
         <div
           className="container-xxl justify-content-start mt-5 p-5"
           style={{ backgroundColor: "#FFF5F6" }}
@@ -84,6 +85,20 @@ function Footer() {
                 </div>
             </div>
 
+=======
+    <footer
+          className="footer container"
+          style={{
+            backgroundColor: "#FFF5F6",
+            padding: "50px",
+            textAlign: "left",
+            marginTop: "auto",
+          }}
+        >
+          <h1 className="text-color">สามฤดู</h1>
+        
+        </footer>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     </>
 }
 export default Footer;

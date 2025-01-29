@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "^5.22.0",
     "@stripe/stripe-js": "^5.5.0",
     "axios": "^1.7.9",
@@ -29,6 +30,17 @@
     "postmark": "^4.0.5",
     "stripe": "^17.5.0",
     "uuid": "^11.0.5"
+=======
+    "@prisma/client": "^5.21.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.1",
+    "express-fileupload": "^1.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
   },
   "devDependencies": {
     "@types/node": "^22.8.2",

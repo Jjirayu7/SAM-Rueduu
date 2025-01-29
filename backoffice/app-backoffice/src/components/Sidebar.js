@@ -51,20 +51,31 @@ function Sidebar() {
       }
     }
     return<>
+<<<<<<< HEAD
     <aside className="main-sidebar elevation-4" style={{ backgroundColor: '#ffffff' }}>
       <a href="index3.html" className="brand-link d-flex align-items-center justify-content-center">
         
+=======
+    <aside className="main-sidebar elevation-4" style={{ backgroundColor: '#D8BABD' }}>
+      <a href="index3.html" className="brand-link d-flex align-items-center justify-content-center">
+        <img src="" alt="" className="brand-image img-circle elevation-3" style={{ opacity: 0.8, marginRight: '10px' }} />
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         <span className="brand-text" style={{ color: '#5A0D6C', fontWeight: 'bold' }}>สามฤดู ผู้ขาย</span>
     </a>
 
     <div class="sidebar">
       <div class="user-panel mt-3">
         <div class="image d-flex">
+<<<<<<< HEAD
           <img 
           src="logo-2.png" 
           alt="User Image"
           ></img>
           <a href="/profile" className="d-block ml-3" style={{ color: '#5A0D6C' }}><h4>{user.name}</h4></a>
+=======
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"></img>
+          <a href="/profile" className="d-block ml-3" style={{ color: '#5A0D6C' }}>{user.name}</a>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
         </div>
         <div class="info mt-2">

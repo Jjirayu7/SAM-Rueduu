@@ -1,14 +1,20 @@
 const express = require('express');
+<<<<<<< HEAD
 const bodyParser = require('body-parser');
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 const app = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
+<<<<<<< HEAD
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 dotenv.config();
 
 function checkSignIn (req, res, next){

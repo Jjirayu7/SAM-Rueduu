@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import HomePage from "../components/HomePage";
 
@@ -144,3 +145,17 @@ function Home() {
 }
 
 export default Home;
+=======
+import HomePage from "../components/HomePage";
+
+function Home() {
+  return <HomePage>
+    <div className="container">
+      <h1>หน้าแรก</h1>
+      <p>ยินดีต้อนรับสู่เว็บไซต์ขายสินค้า</p>
+      </div>
+  </HomePage>
+}
+
+export default Home;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe

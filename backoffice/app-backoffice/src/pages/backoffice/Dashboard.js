@@ -1,17 +1,41 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import config from "../../config";
 import axios from "axios";
 import BackOffice from "../../components/BackOffice";
+=======
+import BackOffice from "../../components/BackOffice";
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, plugins, scales } from 'chart.js';
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function Dashboard() {
+<<<<<<< HEAD
     const [data, setData] = useState(null);
     const [availableYears, setAvailableYears] = useState([]); // เก็บข้อมูลปีที่มี
     const [selectedYear, setSelectedYear] = useState(null); // ปีที่เลือก
     const [options] = useState({
+=======
+    const data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apirl', 'May'],
+        datasets: [
+            {
+                label: 'Monthly Sales',
+                data: [10, 20, 30, 40, 50],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const options = {
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         responsive: true,
         plugins: {
             legend: {
@@ -19,6 +43,7 @@ function Dashboard() {
             },
             title: {
                 display: true,
+<<<<<<< HEAD
                 text: 'ยอดขายรายเดือน'
             },
             tooltip: {
@@ -27,10 +52,14 @@ function Dashboard() {
                         return `ยอดขาย: ฿${tooltipItem.raw.toLocaleString()}`;
                     }
                 }
+=======
+                Text: 'Monthly Sales Data'
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             }
         },
         scales: {
             y: {
+<<<<<<< HEAD
                 beginAtZero: true,
                 ticks: {
                     callback: function(value) {
@@ -217,3 +246,16 @@ function Dashboard() {
 }
 
 export default Dashboard;
+=======
+                beginAtZero: true
+            }
+        }
+    };
+
+    return<BackOffice>
+        <Bar data={data} options={options}></Bar>
+    </BackOffice>
+}
+
+export default Dashboard;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe

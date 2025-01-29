@@ -48,7 +48,10 @@ function SignIn(){
                   <h6>อีเมล</h6>
                   <div className="input-group mb-3 ">               
                   <input 
+<<<<<<< HEAD
                             style={{ borderRadius: "30px"}}
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                             type="email" 
                             class="form-control" 
                             placeholder="Email"
@@ -58,7 +61,10 @@ function SignIn(){
                   <h6>รหัสผ่าน</h6> 
                   <div className="input-group mb-3">
                   <input 
+<<<<<<< HEAD
                             style={{ borderRadius: "30px"}}
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                             type="password" 
                             class="form-control" 
                             placeholder="Password"
@@ -72,7 +78,11 @@ function SignIn(){
                         </div>
                     <div className="mt-4 d-flex justify-content-center">
                       <button type="submit" onClick={handleSignIn} className="btn rounded-pill" style={{backgroundColor: "#5B166C"}}>
+<<<<<<< HEAD
                         <h6 className="text-white mx-4 mt-2">เข้าสู่ระบบ</h6>
+=======
+                        <h6 className="text-white mx-4">เข้าสู่ระบบ</h6>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                       </button>
                     </div>
                 </div>

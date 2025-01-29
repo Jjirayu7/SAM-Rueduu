@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const { PrismaClient } = require('@prisma/client');
+<<<<<<< HEAD
 const cors = require('cors');
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
@@ -391,6 +392,10 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
       res.status(404).json({ error: error.errorMessage || "System error" });
     }
   });  
+=======
+const { error } = require('console');
+const prisma = new PrismaClient();
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 app.post('/save', async (req, res) => {
     try {
@@ -410,9 +415,15 @@ app.post('/save', async (req, res) => {
                     id: req.body.carts[i].id
                 }
             })
+<<<<<<< HEAD
             await prisma.orderDetail.create({
                 data: {
                     ordersId: rowBillSale.id,
+=======
+            await prisma.billSaleDetail.create({
+                data: {
+                    billSaleId: rowBillSale.id,
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                     productId: rowProduct.id,
                     cost: rowProduct.cost,
                     price: rowProduct.price
@@ -427,7 +438,11 @@ app.post('/save', async (req, res) => {
 
 app.get('/list', async (req, res) => {
     try {
+<<<<<<< HEAD
         const results = await prisma.orders.findMany({
+=======
+        const results = await prisma.billSale.findMany({
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             orderBy: {
                 id: 'desc'
             }
@@ -439,6 +454,7 @@ app.get('/list', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
 app.get('/list/:userCustomerId', async (req, res) => {
   const { userCustomerId } = req.params;  // รับค่า userCustomerId จาก URL
 
@@ -500,11 +516,20 @@ app.get('/orderList', async (req, res) => {
 app.get('/billInfo/:orderId', async (req, res) => {
     try {
         const results = await prisma.orderDetail.findMany({
+=======
+app.get('/billInfo/:billSaleId', async (req, res) => {
+    try {
+        const results = await prisma.billSaleDetail.findMany({
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             include: {
                 Product: true
             },
             where: {
+<<<<<<< HEAD
                 ordersId: parseInt(req.params.orderId)
+=======
+                billSaleId: parseInt(req.params.billSaleId)
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             },
             orderBy: {
                 id: 'desc'
@@ -519,9 +544,15 @@ app.get('/billInfo/:orderId', async (req, res) => {
 
 app.get('/updateStatusToPay/:billSaleId', async (req, res) => {
     try {
+<<<<<<< HEAD
         await prisma.orders.update({
             data: {
                 status: 'complete'
+=======
+        await prisma.billSale.update({
+            data: {
+                status: 'pay'
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             },
             where: {
                 id: parseInt(req.params.billSaleId)
@@ -536,9 +567,15 @@ app.get('/updateStatusToPay/:billSaleId', async (req, res) => {
 
 app.get('/updateStatusToSend/:billSaleId', async (req, res) => {
     try {
+<<<<<<< HEAD
         await prisma.orders.update({
             data: {
                 status: 'shiped'
+=======
+        await prisma.billSale.update({
+            data: {
+                status: 'send'
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             },
             where: {
                 id: parseInt(req.params.billSaleId)
@@ -553,7 +590,11 @@ app.get('/updateStatusToSend/:billSaleId', async (req, res) => {
 
 app.get('/updateStatusToCancel/:billSaleId', async (req, res) => {
     try {
+<<<<<<< HEAD
         await prisma.orders.update({
+=======
+        await prisma.billSale.update({
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             data: {
                 status: 'cancel'
             },
@@ -568,6 +609,7 @@ app.get('/updateStatusToCancel/:billSaleId', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
 
 app.get('/test', (req, res) => {
   res.send('success.jsทำงานได้่');
@@ -841,4 +883,6 @@ app.get('/dashboard', async (req, res) => {
 });
 
 
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 module.exports = app;

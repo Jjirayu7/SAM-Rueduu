@@ -10,22 +10,32 @@ function BillSale() {
     const [billSales, setBillSeles] = useState([]);
     const [billSaleDetail, setBillSelesDetail] = useState([]);
     const [sumPrice, setSumPrice] = useState(0);
+<<<<<<< HEAD
     const [searchTerm, setSearchTerm] = useState("");
     const [filterStatus, setFilterStatus] = useState("all");
 
     useEffect(() => {
+=======
+
+    useEffect(() =>{
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
+<<<<<<< HEAD
             const res = await axios.get(config.apiPath + "/api/sale/list", config.headers());
+=======
+            const res = await axios.get(config.apiPath + '/api/sale/list', config.headers());
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
             if (res.data.results !== undefined) {
                 setBillSeles(res.data.results);
             }
         } catch (e) {
             Swal.fire({
+<<<<<<< HEAD
                 title: "error",
                 text: e.message,
                 icon: "error",
@@ -36,6 +46,18 @@ function BillSale() {
     const openModalInfo = async (item) => {
         try {
             const res = await axios.get(config.apiPath + "/api/sale/billInfo/" + item.id, config.headers());
+=======
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+        }
+    }
+
+    const openModalInfo = async (item) => {
+        try {
+            const res = await axios.get(config.apiPath + '/api/sale/billInfo/' + item.id, config.headers());
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
             if (res.data.results !== undefined) {
                 setBillSelesDetail(res.data.results);
@@ -49,16 +71,27 @@ function BillSale() {
             }
         } catch (e) {
             Swal.fire({
+<<<<<<< HEAD
                 title: "error",
                 text: e.message,
                 icon: "error",
             });
         }
     };
+=======
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+            
+        }
+    }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
     const handlePay = async (item) => {
         try {
             const button = await Swal.fire({
+<<<<<<< HEAD
                 title: "ชำระเงิน",
                 text: "",
                 icon: "question",
@@ -78,20 +111,52 @@ function BillSale() {
                     });
 
                     fetchData();
+=======
+                title: 'ชำระเงิน',
+                text: '',
+                icon: 'question',
+                showCancelButton: true,
+                showConfirmButton: true
+            });
+
+            if (button.isConfirmed) {
+                const res = await axios.get(config.apiPath + '/api/sale/updateStatusToPay/' + item.id, config.headers());
+
+                if (res.data.message === 'success') {
+                    Swal.fire({
+                        title: 'save',
+                        text: 'save',
+                        icon: 'success',
+                        timer: 1000
+                    })
+
+                    fetchData();
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 }
             }
         } catch (e) {
             Swal.fire({
+<<<<<<< HEAD
                 title: "error",
                 text: e.message,
                 icon: "error",
             });
         }
     };
+=======
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+        }
+    }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
     const handleSend = async (item) => {
         try {
             const button = await Swal.fire({
+<<<<<<< HEAD
                 title: "ส่งแล้ว",
                 text: "",
                 icon: "question",
@@ -111,20 +176,52 @@ function BillSale() {
                     });
 
                     fetchData();
+=======
+                title: 'ส่งแล้ว',
+                text: '',
+                icon: 'question',
+                showCancelButton: true,
+                showConfirmButton: true
+            });
+
+            if (button.isConfirmed) {
+                const res = await axios.get(config.apiPath + '/api/sale/updateStatusToSend/' + item.id, config.headers());
+
+                if (res.data.message === 'success') {
+                    Swal.fire({
+                        title: 'save',
+                        text: 'save',
+                        icon: 'success',
+                        timer: 1000
+                    })
+
+                    fetchData();
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 }
             }
         } catch (e) {
             Swal.fire({
+<<<<<<< HEAD
                 title: "error",
                 text: e.message,
                 icon: "error",
             });
         }
     };
+=======
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+        }
+    }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
     const handleCancel = async (item) => {
         try {
             const button = await Swal.fire({
+<<<<<<< HEAD
                 title: "ยกเลิก",
                 text: "",
                 icon: "question",
@@ -144,10 +241,33 @@ function BillSale() {
                     });
 
                     fetchData();
+=======
+                title: 'ยกเลิก',
+                text: '',
+                icon: 'question',
+                showCancelButton: true,
+                showConfirmButton: true
+            });
+
+            if (button.isConfirmed) {
+                const res = await axios.get(config.apiPath + '/api/sale/updateStatusToCancel/' + item.id, config.headers());
+
+                if (res.data.message === 'success') {
+                    Swal.fire({
+                        title: 'save',
+                        text: 'save',
+                        icon: 'success',
+                        timer: 1000
+                    })
+
+                    fetchData();
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 }
             }
         } catch (e) {
             Swal.fire({
+<<<<<<< HEAD
                 title: "error",
                 text: e.message,
                 icon: "error",
@@ -284,6 +404,107 @@ function BillSale() {
             </MyModal>
         </BackOffice>
     );
+=======
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+        }
+    }
+
+    const displayStatusText = (item) => {
+        if (item.status === 'wait') {
+            return <div>รอตรวจสอบ</div>
+        }else if (item.status === 'pay') {
+            return <div>ชำระเงินแล้ว</div>
+        }else if (item.status === 'send') {
+            return <div>ส่งแล้ว</div>
+        }else if (item.status === 'cancel') {
+            return <div>ยกเลิก</div>
+        }
+    }
+
+
+    return<BackOffice>
+        <div className="card">
+            <div className="card-header">
+                <div className="card-title">รายงานยอดขาย</div>
+            </div>
+            <div className="card-body">
+                <table className="table table-bordered table-striped">
+                    <thead>
+                        <th>ลูกค้า</th>
+                        <th>เบอร์</th>
+                        <th>ที่อยู่</th>
+                        <th>วันที่</th>
+                        <th>เวลา</th>
+                        <th>สถานะ</th>
+                        <th width="500px"></th>
+                    </thead>
+                    <tbody>
+                        {billSales.length > 0 ? billSales.map(item =>
+                            <tr key={item.id}>
+                                <td>{item.customerName}</td>
+                                <td>{item.customerPhone}</td>
+                                <td>{item.customerAddress}</td>
+                                <td>{dayjs(item.payDate).format("YYYY-MM-DD")}</td>
+                                <td>{item.payTime}</td>
+                                <td>{displayStatusText(item)}</td>
+                                <td className="text-center">
+                                    <button className="btn btn-secondary mr-2"
+                                    data-toggle ="modal"
+                                    data-target ="#modalInfo"
+                                    onClick={e => openModalInfo(item)}>
+                                        <i></i>รายการ
+                                    </button>
+                                    <button className="btn btn-secondary mr-2"
+                                    onClick={e => handlePay(item)}>
+                                        <i></i>ชำเงินแล้ว
+                                    </button>
+                                    <button className="btn btn-secondary mr-2"
+                                    onClick={e => handleSend(item)}>
+                                        <i></i>จัดส่งแล้ว
+                                    </button>
+                                    <button className="btn btn-secondary mr-2"
+                                    onClick={e => handleCancel(item)}>
+                                        <i></i>ยกเลิก
+                                    </button>
+                                </td>
+                            </tr>
+                        ) : <></>}
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <MyModal id="modalInfo" title="รายการ">
+            <table className="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>รายการ</th>
+                        <th className="text-right">ราคา</th>
+                        <th className="text-right">จำนวน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {billSaleDetail.length > 0 ? billSaleDetail.map(item =>
+                        <tr key={item.id}>
+                            <td>{item.Product.name}</td>
+                            <td className="text-right">{parseInt(item.price).toLocaleString('th-TH')}</td>
+                            <td className="text-right">1</td>
+                            </tr>
+                    ): <></>}
+                    
+                </tbody>
+            </table>
+            <div>
+                ราคารวม {sumPrice.toLocaleString('th-th')} บาท
+            </div>
+        </MyModal>
+    </BackOffice>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 }
 
 export default BillSale;

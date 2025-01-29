@@ -10,7 +10,11 @@ h1, h2, h3, h4, h5, h6 {
 
 p, a, span, button {
   font-family: 'Kanit', sans-serif;
+<<<<<<< HEAD
   color: #5B166C ;
+=======
+  color: #5B166C !important;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 }
 
 /* Sidebar */
@@ -26,6 +30,7 @@ p, a, span, button {
   overflow-y: auto;
 }
 
+<<<<<<< HEAD
 .wrapper{
   background-color: #FFF5F6;
 }
@@ -42,6 +47,11 @@ p, a, span, button {
   color: #7e7e7e !important;
 }
 
+=======
+.text-color {
+  color: #5B166C !important;
+}
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 .text-bold {
   font-weight: bold;
 }
@@ -99,7 +109,11 @@ p, a, span, button {
     margin-top: 40px;
   }
   .sidebar {
+<<<<<<< HEAD
     width: 0px;
+=======
+    width: 150px;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     background-color: #fff5f6;
   }
 }
@@ -133,7 +147,11 @@ p, a, span, button {
   width: 100%;
   max-width: 400px;
   padding: 20px;
+<<<<<<< HEAD
   /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+=======
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 }
 
 input.form-control {
@@ -142,6 +160,7 @@ input.form-control {
 .banner {
   background-color: #D8BABD; /* สีพื้นหลัง */
   text-align: center;
+<<<<<<< HEAD
   padding: 20px;
 }
 
@@ -149,6 +168,23 @@ input.form-control {
   position: fixed;
   top: 0;
   left: -400px; 
+=======
+  padding: 20px 0;
+}
+
+.banner-text {
+  color: #ffffff; /* สีข้อความ */
+  font-size: 24px;
+  font-weight: bold;
+}
+<<<<<<< HEAD
+=======
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -370px; 
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
   width: 350px;
   height: 50%;
   background: #fff;
@@ -175,6 +211,7 @@ input.form-control {
   color: #333;
   text-decoration: none;
 }
+<<<<<<< HEAD
 
 .card-body {
   overflow: hidden;        /* ซ่อนข้อความที่เกินขอบ */
@@ -353,3 +390,6 @@ input.form-control {
   position: absolute; /* หรือ absolute ขึ้นอยู่กับการจัดวาง */
   z-index: 9999; /* ค่า z-index สูงๆ เพื่อให้เลเยอร์นี้อยู่บนสุด */
 }
+=======
+>>>>>>> 5f2f14a (update backoff)
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe

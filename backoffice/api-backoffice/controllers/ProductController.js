@@ -1,18 +1,27 @@
 const express = require("express");
+<<<<<<< HEAD
 const bodyParser = require('body-parser');
 const app = express.Router();
 const { PrismaClient, Prisma } = require("@prisma/client");
+=======
+const app = express.Router();
+const { PrismaClient } = require("@prisma/client");
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 const exceljs = require("exceljs");
 const fs = require("fs");
+<<<<<<< HEAD
 const path = require('path');  
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+=======
+const path = require('path');  // เพิ่มบรรทัดนี้
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 dotenv.config();
 
@@ -31,7 +40,11 @@ app.post("/upload", async (req, res) => {
                 const d = myDate.getDate();
                 const h = myDate.getHours();
                 const mi = myDate.getMinutes();
+<<<<<<< HEAD
                 const s = myDate.getSeconds(); 
+=======
+                const s = myDate.getSeconds();
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 const ms = myDate.getMilliseconds();
 
                 const arrFileName = img.name.split('.');
@@ -52,6 +65,7 @@ app.post("/upload", async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 // app.post("/create", async (req, res) => {
 //     try {
 //         await prisma.product.create({
@@ -80,6 +94,20 @@ app.post("/create", async (req, res) => {
 });
 
 
+=======
+app.post("/create", async (req, res) => {
+    try {
+        await prisma.product.create({
+            data: req.body,
+        });
+
+        res.send({ message: 'success' });
+    } catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+});
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 app.get("/list", async (req, res) => {
     try {
         const data = await prisma.product.findMany({
@@ -98,7 +126,14 @@ app.get("/list", async (req, res) => {
 
 app.delete("/remove/:id", async (req, res) => {
     try {
+<<<<<<< HEAD
         await prisma.product.delete({
+=======
+        await prisma.product.update({
+            data: {
+                status: "delete",
+            },
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             where: {
                 id: parseInt(req.params.id),
             },
@@ -111,13 +146,17 @@ app.delete("/remove/:id", async (req, res) => {
 
 app.put("/update", async (req, res) => {
     try {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         const oldData = await prisma.product.findFirst({
             where: {
                 id: parseInt(req.body.id),
             },
         });
 
+<<<<<<< HEAD
         
         const updatedImages = oldData.imgs ? [...oldData.imgs, ...req.body.imgs] : req.body.imgs;
 
@@ -126,6 +165,17 @@ app.put("/update", async (req, res) => {
                 ...req.body,
                 imgs: updatedImages, 
             },
+=======
+        if (oldData && oldData.img) {
+            const imagePath = './uploads/' + oldData.img;
+            if (fs.existsSync(imagePath)) {
+                await fs.unlinkSync(imagePath);
+            }
+        }
+
+        await prisma.product.update({
+            data: req.body,
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             where: {
                 id: parseInt(req.body.id),
             },
@@ -137,7 +187,10 @@ app.put("/update", async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 app.post("/uploadFromExcel", async (req, res) => {
     try {
         const fileExcel = req.files.fileExcel;
@@ -217,6 +270,7 @@ app.delete('/remove-image', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 app.get('/info/:id', async (req, res) => {
     const productId = parseInt(req.params.id); 
   
@@ -523,5 +577,9 @@ app.get('/dashboard', async (req, res) => {
   });
   
   
+=======
+
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 module.exports = app;

@@ -7,6 +7,7 @@ import config from "../../config";
 
 function Product() {
     const [product, setProduct] = useState({});
+<<<<<<< HEAD
     const [seasons, setSeasons] = useState([]);
     const [products, setProducts] = useState([]);
     const [imgs, setImgs] = useState([]);
@@ -81,6 +82,24 @@ function Product() {
     }, [isVisible]); // ขึ้นกับการเปลี่ยนแปลงของ isVisible
 
     const fetchData1 = async() => {
+=======
+    const [products, setProducts] = useState([]);
+    // const [img, setImg] = useState({});
+    const [imgs, setImgs] = useState([]);
+    const [fileExcel, setFileExcel] = useState({});
+    const refImg = useRef();
+    const refExcel = useRef();
+    const [imgsToDelete, setImgsToDelete] = useState([]); 
+    //const [newImgs, setNewImgs] = useState([]); 
+
+    
+    useEffect(() => {
+        fetchData();
+
+    }, []);
+
+    const fetchData = async() => {
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         try {
             const res = await axios.get(config.apiPath + '/product/list', config.headers());
 
@@ -113,6 +132,10 @@ function Product() {
            
 
             if (response.data.message === 'success') {
+<<<<<<< HEAD
+=======
+                // หากการลบไฟล์สำเร็จ ให้ลบรูปภาพออกจาก state
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 item.imgs = item.imgs.filter((img) => img !== imgToRemove);
                 setProduct({ ...item }); // อัปเดต state ของ product
             } else {
@@ -123,6 +146,7 @@ function Product() {
         }
     };
     
+<<<<<<< HEAD
     // const handleSave = async () => {
     //     try {
     //         const uploadedImages = await handleUpload();
@@ -136,6 +160,66 @@ function Product() {
     
     //         let res;
     
+=======
+    
+    
+    const removeImage = (img) => {
+        setImgsToDelete([...imgsToDelete, img]); // เก็บชื่อรูปภาพที่ต้องลบ
+        setProduct({
+            ...product,
+            imgs: product.imgs.filter((image) => image !== img), // ลบรูปภาพออกจากรายการ
+        });
+    };
+    
+    const handleSave = async () => {
+        try {
+            const uploadedImages = await handleUpload();
+            product.imgs = uploadedImages; 
+    
+            product.cost = parseInt(product.cost);
+            product.price = parseInt(product.price);
+    
+            let res;
+    
+            if (product.id === undefined) {
+                res = await axios.post(config.apiPath + '/product/create', product, config.headers());
+            } else {
+                res = await axios.put(config.apiPath + '/product/update', product, config.headers());
+            }
+    
+            if (res.data.message === 'success') {
+                Swal.fire({
+                    title: 'save',
+                    text: 'success',
+                    icon: 'success',
+                    timer: 500,
+                });
+                document.getElementById('modalProduct_btnClose').click();
+                fetchData();
+            }
+        } catch (error) {
+            Swal.fire({
+                title: 'error',
+                text: error.message,
+                icon: 'error',
+            });
+        }
+    };
+    
+    // const handleSav = async () => {
+    //     try {
+    //         // อัปโหลดรูปภาพใหม่
+    //         const uploadedImages = await handleUpload();
+    
+    //         // รวมรูปภาพใหม่กับรูปภาพเดิมที่ไม่ได้ลบ
+    //         const remainingImgs = product.imgs.filter((img) => !imgsToDelete.includes(img));
+    //         product.imgs = [...remainingImgs, ...uploadedImages];
+    
+    //         product.cost = parseInt(product.cost);
+    //         product.price = parseInt(product.price);
+    
+    //         let res;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     //         if (product.id === undefined) {
     //             res = await axios.post(config.apiPath + '/product/create', product, config.headers());
     //         } else {
@@ -151,6 +235,10 @@ function Product() {
     //             });
     //             document.getElementById('modalProduct_btnClose').click();
     //             fetchData();
+<<<<<<< HEAD
+=======
+    //             clearForm();
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     //         }
     //     } catch (error) {
     //         Swal.fire({
@@ -160,6 +248,7 @@ function Product() {
     //         });
     //     }
     // };
+<<<<<<< HEAD
 
     const handleSave1 = async () => { 
         try {
@@ -271,23 +360,44 @@ function Product() {
     }
 };
 
+=======
+    
+
+    // const clearForm = () => {
+    //     setProduct({
+    //         name: '',
+    //         price: '',
+    //         cost: ''
+    //     })
+    //     setImg(null);
+    //     refImg.current.value = "";
+    // }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
     const clearForm = () => {
         setProduct({
             name: '',
             price: '',
             cost: '',
+<<<<<<< HEAD
             stock: '',
             seasons: [],
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             detail1: '',
             detail2: '',
             detail3: ''
         });
+<<<<<<< HEAD
         setImgs([]); 
         refImg.current.value = ""; 
         refImg1.current.value = ''; 
         refImg2.current.value = ''; 
         refImg3.current.value = '';
+=======
+        setImgs([]); // ล้าง array ของรูปภาพ
+        refImg.current.value = ""; // ล้างค่า input file
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     };
     
 
@@ -321,13 +431,51 @@ function Product() {
         }
     }
 
+<<<<<<< HEAD
     const selectedFilesMain = (inputFiles) => {
+=======
+    // const selectedFile = (inputFile) => {
+    //     if (selectedFile !== undefined){
+    //         if (inputFile.length>0){
+    //             setImg(inputFile[0]);
+    //         }
+    //     }
+    // }
+    const selectedFiles = (inputFiles) => {
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         if (inputFiles.length > 0) {
             setImgs([...imgs, ...Array.from(inputFiles)]);
         }
     };
+<<<<<<< HEAD
 
 
+=======
+    
+    // const handleUpload = async() => {
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append('img', img);
+
+    //         const res = await axios.post(config.apiPath + '/product/upload', formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data',
+    //                 'Authorization': localStorage.getItem('token')
+    //             }
+    //         })
+    //         if (res.data.newName !== undefined) {
+    //             return res.data.newName;
+    //         }
+    //     } catch (e) {
+    //         Swal.fire({
+    //             title: 'error',
+    //             text: e.message,
+    //             icon: 'error'
+    //         })
+    //         return "";
+    //     }
+    // }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     const handleUpload = async () => {
         try {
             const uploadedImages = [];
@@ -359,6 +507,10 @@ function Product() {
         }
     };
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     const showImage = (item) => {
         if (item.imgs && item.imgs.length > 0) {
             return (
@@ -372,7 +524,11 @@ function Product() {
                             <img
                                 src={`${config.apiPath}/uploads/${img}`} // ใส่พาธสมบูรณ์
                                 alt={`product-${item.id}-${index}`}
+<<<<<<< HEAD
                                 className="rounded-img"
+=======
+                                className="img-thumbnail"
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                             <button
@@ -388,6 +544,7 @@ function Product() {
                 </div>
             );
         }
+<<<<<<< HEAD
         return <span>กรุณาอัพโหลดรูปภาพ</span>;
     };
 
@@ -463,6 +620,10 @@ function Product() {
         }
         return <span>กรุณาอัพโหลดรูปภาพ</span>;
     }
+=======
+        return <span>No Image</span>;
+    };
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     
     const selectedFileExcel = (fileInput) => {
         if (fileInput !== undefined) {
@@ -507,6 +668,7 @@ function Product() {
         refExcel.current.value = '';
         setFileExcel(null);
     }
+<<<<<<< HEAD
 
     const selectedFileDescriptionImage1 = (inputFiles) => {
         if (inputFiles.length > 0) {
@@ -663,16 +825,40 @@ function Product() {
             <div className="mt-3" >
                 {showImage(product)}
             <h5 className="text-custom">รูปภาพหลัก</h5>
+=======
+    
+    return<BackOffice>
+        <div className="h4 pl-3" style={{ color: '#5A0D6C' }}>Product</div>
+            <div className="pl-3">
+                <button onClick={clearForm} className="btn btn-primary mr-3" data-toggle="modal" data-target="#modalProduct">
+                    <i className="fa fa-plus mr-2"></i>เพิ่มสินค้า
+                </button>
+                <button onClick={clearFormExcel} className="btn btn-success" data-toggle="modal" data-target="#modalExcel">
+                    <i className="fa fa-arrow-down mr-2"></i>เพิ่มสินค้าด้วยไฟล์ Excel
+                </button>
+            </div>
+        <MyModal id="modalProduct" title="สินค้า" >
+
+             {/* general */}
+            <div className="mt-3" >
+                {showImage(product)}
+            <div>อัปโหลดรูปภาพ</div>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 <input
                     className="form-control"
                     type="file"
                     multiple
                     ref={refImg}
+<<<<<<< HEAD
                     onChange={(e) => selectedFilesMain(e.target.files)}
+=======
+                    onChange={(e) => selectedFiles(e.target.files)}
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 />
             </div>
 
             <div>
+<<<<<<< HEAD
                 <h5 className="text-custom">ชื่อสินค้า</h5>
                     <input 
                     value={product.name} 
@@ -715,6 +901,17 @@ function Product() {
 
             <div className="mt-3">
                 <h5 className="text-custom">ราคาทุน</h5>
+=======
+                <div>ชื่อสินค้า</div>
+                    <input 
+                    value={product.name} 
+                    className="form-control" 
+                    onChange={e => setProduct({ ...product, name: e.target.value})}>
+                    </input>
+            </div>
+            <div className="mt-3">
+                <div>ราคาทุน</div>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                     <input 
                     value={product.cost} 
                     className="form-control"
@@ -722,13 +919,18 @@ function Product() {
                     </input>
             </div>
             <div className="mt-3">
+<<<<<<< HEAD
                 <h5 className="text-custom">ราคาขาย</h5>
+=======
+                <div>ราคาขาย</div>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                     <input 
                     value={product.price} 
                     className="form-control" 
                     onChange={e => setProduct({ ...product, price: e.target.value})}>
                     </input>
             </div>
+<<<<<<< HEAD
             <div className="mt-3">
                 <h5 className="text-custom">จำนวนในคลัง</h5>
                     <input 
@@ -860,6 +1062,86 @@ function Product() {
                 </label>
             </div>
             </div> 
+=======
+            {/* <div className="mt-3">
+                <div className="mb-3">{showImage(product)}</div>
+                <div>ภาพสินค้า</div>
+                <input className="form-control" type="file" ref={refImg} onChange={e => selectedFile(e.target.files)}></input>
+            </div> */}
+            <div className="mt-3">
+                <h6>ส่วนที่ 1</h6>
+            </div>
+            <div className="d-flex justify-content-between mt-3">        
+                <div style={{ flex: 1, marginRight: '10px' }}>
+                    <h6>คำบรรยาย</h6>
+                    <input 
+                        value={product.detail1} 
+                        className="form-control"
+                        onChange={e => setProduct({ ...product, detail1: e.target.value})}
+                        />
+                        
+                </div>
+                <div className="ml-3">
+                    <h6>อัปโหลดรูปภาพบรรยาย</h6>
+                    {showImage(product)}
+                    <input
+                        className="form-control"
+                        type="file"
+                        multiple
+                        ref={refImg}
+                        onChange={(e) => selectedFiles(e.target.files)}
+                    />
+                </div>
+            </div> 
+            <div className="mt-3">
+                <h6>ส่วนที่ 2</h6>
+            </div>
+            <div className="d-flex justify-content-between mt-3">        
+                <div>
+                    <h6>อัปโหลดรูปภาพบรรยาย</h6>
+                    {showImage(product)}
+                    <input
+                        className="form-control"
+                        type="file"
+                        multiple
+                        ref={refImg}
+                        onChange={(e) => selectedFiles(e.target.files)}
+                    />
+                </div>
+                <div className="ml-3" style={{ flex: 1, marginRight: '10px' }}>
+                    <h6>คำบรรยาย</h6>
+                    <input 
+                        value={product.detail2} 
+                        className="form-control" 
+                        onChange={e => setProduct({ ...product, detail2: e.target.value})}></input>
+                </div>
+                
+            </div>
+            <div className="mt-3">
+                <h6>ส่วนที่ 3</h6>
+            </div>
+            <div className="d-flex justify-content-between mt-3">        
+                <div style={{ flex: 1, marginRight: '10px' }}>
+                    <h6>คำบรรยาย</h6>
+                    <input 
+                        value={product.detail3} 
+                        className="form-control" 
+                        onChange={e => setProduct({ ...product, detail3: e.target.value})}></input>
+                </div>
+                <div className="ml-3">
+                    <h6>อัปโหลดรูปภาพบรรยาย</h6>
+                    {showImage(product)}
+                    <input
+                        className="form-control"
+                        type="file"
+                        multiple
+                        ref={refImg}
+                        onChange={(e) => selectedFiles(e.target.files)}
+                    />
+                </div>
+            </div>            
+            
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
             <div className="mt-3">
                 <button className="btn btn-primary" onClick={handleSave}>
                     <i className="fa fa-check mr-2"></i>save
@@ -870,26 +1152,42 @@ function Product() {
                 <table className="mt-3 table-bordered table-striped">
                     <thead>
                         <tr>
+<<<<<<< HEAD
                             <th className="p-2 text-center">รูปภาพสินค้า</th>
                             <th className="text-center">ชื่อสินค้า</th>
                             <th width="150px" className="text-center">ราคาต้นทุน</th>
                             <th width="150px" className="text-center">ราคาขาย</th>
                             <th width="150px" className="text-center">จำนวนในคลัง</th>
                             <th width="200px" className="text-center">จัดการสินค้า</th>
+=======
+                            <th>ภาพสินค้า</th>
+                            <th>ชื่อสินค้า</th>
+                            <th width="150px" className="text-right">ราคาต้นทุน</th>
+                            <th width="150px" className="text-right">ราคาขาย</th>
+                            <th width="200px"></th>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                         </tr>
                     </thead>
                     <tbody>
                     {products.length > 0 ? products.map(item =>
                         <tr key={item.id}>
+<<<<<<< HEAD
                             <td className="p-2">{showImage(item)}</td>
                             <td className="text-center">{item.name}</td>
                             <td className="text-center">{item.cost}</td>
                             <td className="text-center">{item.price}</td>
                             <td className="text-center">{item.stock}</td>
+=======
+                            <td>{showImage(item)}</td>
+                            <td>{item.name}</td>
+                            <td className="text-right">{item.cost}</td>
+                            <td className="text-right">{item.price}</td>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                             <td className="text-center">
                                 <button className="btn btn-primary mr-2" 
                                         data-toggle="modal" 
                                         data-target="#modalProduct" 
+<<<<<<< HEAD
                                         onClick={() => {
                                             setProduct(item);
                                             setImgs([]);
@@ -906,6 +1204,9 @@ function Product() {
                                             });
                                             }
                                         }>
+=======
+                                        onClick={() => setProduct(item)}>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                                     <i className="fa fa-edit"></i> แก้ไข
                                 </button>
                                 <button className="btn btn-danger" onClick={() => handleRemove(item)}>

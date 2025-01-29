@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+<<<<<<< HEAD
+=======
+import App from './App';
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 import reportWebVitals from './reportWebVitals';
 import { 
   createBrowserRouter, RouterProvider 
@@ -12,6 +16,7 @@ import Cart from './pages/Cart.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from './pages/SignIn.js';
 import Register from './pages/Register.js'
+<<<<<<< HEAD
 import Checkout from './pages/Checkout.js';
 import Success from './pages/Success.js';
 import ProtectedRoute from './pages/ProtectedRoute.js';
@@ -21,18 +26,24 @@ import Orders from './pages/Orders.js'
 import CancelPage from './pages/Cancel.js';
 import ResetPassword from './pages/ResetPassword.js';
 import NewPassword from './pages/NewPassword.js';
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 const router = createBrowserRouter([
   {
     path: '/',
+<<<<<<< HEAD
     element: <PublicRoute><SignIn></SignIn></PublicRoute>
   },
   {
     path: '/home',
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     element: <Home></Home>
   },
   {
     path: '/productMain',
+<<<<<<< HEAD
   element: <ProtectedRoute><ProductMain></ProductMain></ProtectedRoute>
   },
   {
@@ -46,10 +57,26 @@ const router = createBrowserRouter([
   {
     path: '/signIn',
     element: <PublicRoute><SignIn></SignIn></PublicRoute>
+=======
+  element: <ProductMain></ProductMain>
+  },
+  {
+    path: '/productInfo',
+    element: <ProductInfo></ProductInfo>
+  },
+  {
+    path: '/cart',
+    element: <Cart></Cart>
+  },
+  {
+    path: '/signIn',
+    element: <SignIn></SignIn>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
   },
   {
     path: '/register',
     element: <Register></Register>
+<<<<<<< HEAD
   },
   {
     path: '/checkout',
@@ -78,6 +105,8 @@ const router = createBrowserRouter([
   { 
     path: '/reset-password/:token',
     element: <NewPassword></NewPassword>
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

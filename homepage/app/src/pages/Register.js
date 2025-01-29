@@ -1,6 +1,10 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
+=======
+import { Link, useNavigate } from "react-router-dom";
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 import { useState } from "react";
 import config from "../config";
 
@@ -8,7 +12,11 @@ function Register() {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
+<<<<<<< HEAD
     userName: "",
+=======
+    username: "",
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     email: "",
     password: "",
     repassword: "",
@@ -17,6 +25,10 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     if (user.password !== user.repassword) {
       Swal.fire({
         title: "Error",
@@ -25,15 +37,25 @@ function Register() {
       });
       return;
     }
+<<<<<<< HEAD
     try {
       const res = await axios.post(config.apiPath + "/user/customer/register", user);
+=======
+
+    try {
+      const res = await axios.post(config.apiPath + "/user/register", user);
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
       Swal.fire({
         title: "Success",
         text: "Registration completed",
         icon: "success",
       });
+<<<<<<< HEAD
       navigate("/signIn");
+=======
+      navigate("/login");
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     } catch (e) {
       Swal.fire({
         title: "Error",
@@ -46,7 +68,11 @@ function Register() {
   return (
     <div className="signin-container">
       <div className="signin-image">
+<<<<<<< HEAD
         <img src="logo-2.png" alt="Sign In Visual" />
+=======
+        <img src="imgnot.jpg" alt="Sign In Visual" />
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
       </div>
       <div className="signin-box">
         <div className="p-5" style={{ borderRadius: "30px", backgroundColor: "#fff5f6" }}>
@@ -93,8 +119,13 @@ function Register() {
                   type="text"
                   className="form-control"
                   placeholder=""
+<<<<<<< HEAD
                   value={user.userName}
                   onChange={(e) => setUser({ ...user, userName: e.target.value })}
+=======
+                  value={user.username}
+                  onChange={(e) => setUser({ ...user, username: e.target.value })}
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 />
               </div>
             </div>
@@ -150,4 +181,8 @@ function Register() {
   );
 }
 
+<<<<<<< HEAD
 export default Register;
+=======
+export default Register;
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe

@@ -20,17 +20,25 @@ model Product {
   name    String
   cost    Int
   price   Int
+<<<<<<< HEAD
   stock   Int
   seasons String[]       
   imgs    String[]
   img1    String? 
   img2 String?
   img3 String?
+=======
+  imgs    String[] 
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
   detail1 String?
   detail2 String?
   detail3 String?
   status  String   @default("use")
+<<<<<<< HEAD
   orderDetail  orderDetail[]
+=======
+  BillSaleDetail  BillSaleDetail[]
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 }
 
 model BillSale {
@@ -41,6 +49,7 @@ model BillSale {
   payDate         DateTime
   payTime         String
   status          String           @default("wait")
+<<<<<<< HEAD
 }
 
 model orderDetail {
@@ -91,3 +100,17 @@ model PasswordResetToken {
   userCustomerId Int
 }
 
+=======
+  BillSaleDetail  BillSaleDetail[]
+}
+
+model BillSaleDetail {
+  id          Int         @id() @default(autoincrement())
+  productId   Int
+  billSaleId  Int
+  Product     Product     @relation(fields: [productId], references: [id])
+  BillSale    BillSale    @relation(fields: [billSaleId], references: [id])
+  cost        Int
+  price       Int
+}
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe

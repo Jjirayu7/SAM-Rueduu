@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@stripe/stripe-js": "^5.5.0",
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     "@tailwindcss/forms": "^0.5.9",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,21 +14,31 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "axios": "^1.7.9",
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.8",
+=======
+    "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.13",
+    "react": "^18.3.1",
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "react-select": "^5.10.0",
     "react-slider": "^2.0.6",
     "stripe": "^17.5.0",
     "sweetalert2": "^11.15.3",
     "uuid": "^11.0.5",
+=======
+    "sweetalert2": "^11.15.3",
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     "web-vitals": "^2.1.4"
   },
   "scripts": {

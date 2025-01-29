@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 
 
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 function Navbar() {
     return<>
          <nav class="main-header navbar navbar-expand navbar-light" style={{ backgroundColor: '#FFF5F6' }}>
@@ -9,6 +12,7 @@ function Navbar() {
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
+<<<<<<< HEAD
         <Link to="/home" class="nav-link">
         หน้าหลัก
         </Link>
@@ -16,6 +20,13 @@ function Navbar() {
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+=======
+        <a href="index3.html" class="nav-link">หน้าหลัก</a>
+      </li>
+      {/* <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li> */}
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -26,7 +37,11 @@ function Navbar() {
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
+<<<<<<< HEAD
               <input class="form-control form-control-navbar" type="search" placeholder="ค้นหา" aria-label="Search"/>
+=======
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search"/>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -117,6 +132,7 @@ function Navbar() {
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
+<<<<<<< HEAD
       {/* <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -127,6 +143,18 @@ function Navbar() {
           <i class="fas fa-th-large"></i>
         </a>
       </li> */}
+=======
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     </ul>
   </nav>
     </>

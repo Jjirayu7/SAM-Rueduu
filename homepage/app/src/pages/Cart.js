@@ -7,8 +7,11 @@ import config from "../config";
 import Swal from "sweetalert2";
 import dayjs from "dayjs";
 import HomePage from "../components/HomePage";
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';  
 import { Link } from "react-router-dom";
+=======
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
 
 function Cart() {
@@ -23,6 +26,7 @@ function Cart() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [payDate, setPayDate] = useState(dayjs(new Date()).format('YYYY-MM-DD'));
+<<<<<<< HEAD
   const [payTime, setPayTime] = useState('');    
   const [isVisible, setIsVisible] = useState(true); // สถานะการแสดงผลของหน้า
     const navigate = useNavigate();
@@ -51,10 +55,16 @@ function Cart() {
         setCarts(validatedCarts);
         localStorage.setItem('carts', JSON.stringify(validatedCarts));
 
+=======
+  const [payTime, setPayTime] = useState('');
+  
+    useEffect(() => {
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
         fetchData();
         fetchDataFromLocal();
     }, []);
 
+<<<<<<< HEAD
     useEffect(() => {
         const intervalId = setInterval(() => {
             console.log('asdadsadsas');
@@ -350,6 +360,120 @@ function Cart() {
     };
     
     
+=======
+    const handleSave = async () => {
+        try {
+            const payLoad = {
+                customerName: customerName,
+                customerPhone: customerPhone,
+                customerAddress: customerAddress,
+                payDate: payDate,
+                payTime: payTime,
+                carts: carts  
+            }
+
+            const res = await axios.post(config.apiPath + '/api/sale/save', payLoad);
+
+            if (res.data.message === 'success') {
+                localStorage.removeItem('carts');
+                setRecordInCarts(0);
+                setCarts([]);
+
+                Swal.fire({
+                    title: 'บันทึกข้อมูล',
+                    text: 'ระบบบันทึกข้อมูลของคุณแล้ว',
+                    icon: 'success'
+                })
+
+                document.getElementById('modalCart_btnClose').click();
+                setCustomerName('');
+                setCustomerPhone('');
+                setCustomerAddress('');
+                setPayDate(new Date());
+                setPayTime('');
+            }
+        } catch (e) {
+            Swal.fire({
+                title: 'error',
+                text: e.message,
+                icon: 'error'
+            })
+        }
+    }
+
+    const handleRemove = async (item) => {
+        try {
+            const button = await Swal.fire({
+                title: 'ลบสินค้า',
+                text: 'คุณต้องการลบสินค้าออกจากตะกร้าใช่หรือไม่',
+                icon: 'question',
+                showCancelButton: true,
+                showConfirmButton: true
+            })
+        if (button.isConfirmed) {
+            let arr = carts;
+
+            for (let i = 0; i < arr.length; i++){
+                const itemInCarts = arr[i];
+
+                if (item.id === itemInCarts.id) {
+                    arr.splice(i, 1);
+                }
+            }
+            setCarts(arr);
+            setRecordInCarts(arr.length);
+
+            localStorage.setItem('carts', JSON.stringify(arr));
+
+            callculatePriceAndQty(arr);
+        }
+        } catch (e) {
+            Swal.fire({
+                title: "error",
+                text: e.message,
+                icon: "error"
+            })
+        }
+    }
+
+    const callculatePriceAndQty = (itemInCarts) => {
+        let sumQty = 0;
+        let sumPrice = 0;
+
+        for (let i = 0; i < itemInCarts.length; i++) {
+            const item = itemInCarts[i];
+            sumQty++;
+            sumPrice += parseInt(item.price);
+        }
+        setSumPrice(sumPrice);
+        setSumQty(sumQty);
+    }
+    const addToCart = (item) => {
+        let arr = carts;
+        if (arr === null) {
+            arr = [];
+        }
+        arr.push(item);
+
+        setCarts(arr);
+        setRecordInCarts(arr.length);
+
+        localStorage.setItem('carts', JSON.stringify(carts));
+
+        fetchDataFromLocal();
+    }
+
+    const fetchDataFromLocal = () => {
+        const itemInCarts = JSON.parse(localStorage.getItem('carts'));
+        if (itemInCarts !== null) {
+            setCarts(itemInCarts);
+            setRecordInCarts(itemInCarts !== null ? itemInCarts.length : 0);
+
+            callculatePriceAndQty(itemInCarts);
+        }
+
+    }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
 
     const fetchData = async () => {
         try {
@@ -367,6 +491,7 @@ function Cart() {
         }
     }
 
+<<<<<<< HEAD
     const getSelectedItems = () => {
       return carts.filter(item => item.selected); // เลือกเฉพาะสินค้าที่ถูกเลือก
   };
@@ -378,6 +503,14 @@ function Cart() {
             return <img className="p-2 m-3" height="100px" src={imgPath} alt="Product Image" />;
         }
         return <img className="p-2 m-3" height="100px" src="imgnot.jpg" alt="No image" />; 
+=======
+    function showImage(item) {
+        if (item.img !== undefined){
+            let imgPath = config.apiPath + /uploads/ + item.img;
+            if (item.img === "") imgPath = "imgnot.jpg";
+            return <img className="w-25 p-5" height="150px" src={imgPath} alt=""></img>
+        }
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
     }
     
   return<HomePage title={pageTitle}> 
@@ -400,6 +533,7 @@ function Cart() {
             {carts.length > 0 ? carts.map(item =>
               <div className="d-flex flex-column flex-md-row align-items-center" key={item.id}>
               <div className="p-5">
+<<<<<<< HEAD
                 <input
                     type="checkbox"
                     className="custom-checkbox"
@@ -419,11 +553,19 @@ function Cart() {
                 style={{ textDecoration: 'none' }}>
               <div >
                 <h4
+=======
+                <input type="checkbox" className="custom-checkbox" />
+              </div>
+              {showImage(item)}
+              <div className="text-wrap overflow-hidden p-3 w-50">
+                <h5
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                   className="mb-0 text-truncate"
                   data-bs-toggle="tooltip"
                   title="ชื่อสินค้าตัวอย่างยาวๆ เพื่อดูว่า responsive หรือไม่"
                 >
                   {item.name}
+<<<<<<< HEAD
                   
                 </h4>
                 <h6>ราคา {item.price}</h6>
@@ -440,6 +582,15 @@ function Cart() {
                 <button onClick={e => handleRemove(item)} className="text-black">-</button>
                 <span className="mx-2 text-black" >{item.qty || 1}</span>
                 <button onClick={e => handleAdd(item)} className="text-black">+</button>
+=======
+                </h5>
+              </div>
+
+              <div className="d-flex quantity-buttons p-3 align-items-center">
+                <button className="text-black">-</button>
+                <span className="mx-2" text-black>1</span>
+                <button className="text-black">+</button>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
               </div>
             </div>
             ) : (
@@ -453,11 +604,17 @@ function Cart() {
             </div>
             <div className="d-flex justify-content-end p-5">
               <div className="d-flex mt-2">
+<<<<<<< HEAD
                 <h4 className="mx-5">ราคารวม : </h4><h4 className="mx-2">{calculateSelectedPrice().toLocaleString('th-TH')}</h4><h4 className="mx-2">฿</h4>
               </div>
               <button 
               onClick={handleCheckout}
               className="btn ms-3 rounded-pill" style={{backgroundColor: "#5B166C"}}>
+=======
+                <h4>ราคารวม : </h4><h4>฿ 100</h4>
+              </div>
+              <button className="btn ms-3 rounded-pill" style={{backgroundColor: "#5B166C"}}>
+>>>>>>> 6cdc9c63e9f9b9686869ac51b9ac47b1806a73fe
                 <h6 className="mt-1 m-2 text-white">ชำระเงิน</h6>
               </button>
             </div>
